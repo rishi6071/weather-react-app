@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import axios from 'axios';
 
 import MostSunny from '../icons/mostly-sunny.svg';
 import Sunny from '../icons/sunny.svg';
 
 const Today = () => {
+    
 
     return (
         <>
