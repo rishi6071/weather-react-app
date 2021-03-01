@@ -21,13 +21,13 @@ const App = () => {
       <main className="main-container">
 
         {/* Current Weather */}
-        <Current />
+        {/* <Current /> */}
 
         {/* Today's Weather */}
-        <Today />
+        {/* <Today /> */}
 
         {/* Next 5 Days Weather */}
-        <NextDays />
+        {/* <NextDays /> */}
 
       </main>
     </>

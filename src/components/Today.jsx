@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import NextDays from './NextDays';
+
 const Today = () => {
     // Todays Weather
     const [todayWeather, setTodayWeather] = useState(JSON.parse(localStorage.getItem('weatherData')).forecast.forecastday[0]);
-    console.log(todayWeather.hour);
 
     // Get Time from DateTime
     const getTime = (datetime) => {
@@ -35,6 +36,9 @@ const Today = () => {
                     }
                 </div>
             </div>
+
+            {/* Next 5 Days Weather */}
+            <NextDays />
         </>
     );
 }

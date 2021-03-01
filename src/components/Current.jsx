@@ -2,11 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import { Location } from './SearchBar';
+import { LocationValue } from './SearchBar';
 
+import Today from './Today';
 import Loader from './Loader';
 
 const Current = () => {
+
     // Loading Confirmation
     const [loadConfirmation, setLoadConfirmation] = useState(false);
 
@@ -14,7 +16,7 @@ const Current = () => {
     const [currentData, setCurrentData] = useState({});
 
     // Getting selectedLocation from Local Storage
-    const [location, setLocation] = useState(localStorage.getItem('selectedLocation'));
+    const location = useContext(LocationValue);
 
     useEffect(() => {
         // Documentation for API Response
@@ -34,7 +36,6 @@ const Current = () => {
         };
 
         axios.request(options).then(function (response) {
-            console.log(response.data);
             setCurrentData(response.data);
 
             // Passing the Data to localStorage to avoid multiple calls for Same API on same page
@@ -96,6 +97,9 @@ const Current = () => {
                     <div className="current-stats__label">Sunset</div>
                 </div>
             </div>
+
+            {/* Todays Weather */}
+            <Today />
         </>
     );
 }
