@@ -1,12 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 
-import MostSunny from '../icons/mostly-sunny.svg';
-import Sunny from '../icons/sunny.svg';
-
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import { Location } from './SearchBar';
 
-import { fetchCurrentWeather, fetchTodaysWeather } from '../api/Weather';
+import Loader from './Loader';
 
 const Current = () => {
     // Loading Confirmation
@@ -15,12 +13,20 @@ const Current = () => {
     // useState for Current Weather
     const [currentData, setCurrentData] = useState({});
 
-    // useEffect for Current Weather
+    // Getting selectedLocation from Local Storage
+    const [location, setLocation] = useState(localStorage.getItem('selectedLocation'));
+
     useEffect(() => {
+        // Documentation for API Response
+        // https://www.weatherapi.com/docs/#weather-icons
+
         const options = {
             method: 'GET',
             url: 'https://weatherapi-com.p.rapidapi.com/forecast.json',
-            params: { q: 'Indore', days: '3' },
+            params: {
+                q: `${location}`,
+                days: '3'
+            },
             headers: {
                 'x-rapidapi-key': '3c3dccfe74msh886ce30c094c51fp1150d0jsn34f32b232ba4',
                 'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com'
@@ -30,22 +36,32 @@ const Current = () => {
         axios.request(options).then(function (response) {
             console.log(response.data);
             setCurrentData(response.data);
+
+            // Passing the Data to localStorage to avoid multiple calls for Same API on same page
+            localStorage.setItem('weatherData', JSON.stringify(response.data));
+
             setLoadConfirmation(true);
         }).catch(function (error) {
             console.error(error);
         });
-    }, []);
+    }, [location]);
+
+    // Get Last Updated time in a proper manner
+    const getLastUpdated = (datetime) => {
+        const lastUpdated = new Date(datetime);
+        return `${lastUpdated.toDateString()} ${lastUpdated.toLocaleTimeString()}`;
+    }
 
     // Load Confirmation
     if (!loadConfirmation) {
-        return "Nothing";
+        return <Loader />;
     }
 
     return (
         <>
             <div className="location-and-date">
                 <h1 className="location-and-date__location">{currentData.location.name}, {currentData.location.country}</h1>
-                <div>Last Updated - {currentData.current.last_updated}</div>
+                <div>Last Updated- {getLastUpdated(currentData.current.last_updated)}</div>
             </div>
 
 

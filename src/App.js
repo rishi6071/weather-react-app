@@ -9,7 +9,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import SearchBar from './components/SearchBar';
 import Current from './components/Current';
 import Today from './components/Today';
-import Next5Days from './components/Next5Days';
+import NextDays from './components/NextDays';
 
 const App = () => {
 
@@ -27,7 +27,7 @@ const App = () => {
         <Today />
 
         {/* Next 5 Days Weather */}
-        <Next5Days />
+        <NextDays />
 
       </main>
     </>
