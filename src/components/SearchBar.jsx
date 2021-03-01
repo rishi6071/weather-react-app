@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import Current from './Current';
 
+import BrandLogo from '../logo/brandLogo.png';
+import './css/SearchBar.css';
+
 const LocationValue = React.createContext(null);
 
 const SearchBar = () => {
@@ -16,18 +19,21 @@ const SearchBar = () => {
             <LocationValue.Provider value={location}>
                 <nav className="navbar navbar-dark">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#">WEATHER</a>
-                        <form className="d-flex">
-                            <input className="form-control me-2"
+                        <a className="navbar-brand" href="#">
+                            <img src={BrandLogo} alt={"Brand Logo"} /> 
+                            <span>WEATHER</span>
+                        </a>
+                        <form className="d-flex search_form">
+                            <input className="form-control"
                                 type="search"
-                                placeholder="Search any Location..."
+                                placeholder="Search a City..."
                                 aria-label="Search"
                                 value={searchInput}
                                 onChange={(event) => {
                                     setSearchInput(event.target.value);
                                 }}
                             />
-                            <input className="btn btn-info px-4"
+                            <input className="btn px-4"
                                 type="submit"
                                 value="Search"
                                 onClick={(event) => {

@@ -1,33 +1,36 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import axios from 'axios';
 
+import './css/Today.css';
+
 import NextDays from './NextDays';
+import { WeatherData } from './Current';
 
 const Today = () => {
-    // Todays Weather
-    const [todayWeather, setTodayWeather] = useState(JSON.parse(localStorage.getItem('weatherData')).forecast.forecastday[0]);
-
     // Get Time from DateTime
     const getTime = (datetime) => {
         const time = new Date(datetime).toLocaleTimeString();
         let [colonPosition, spacePosition] = [time.indexOf(':'), time.indexOf(' ')];
-        return time.replace(time.substring(colonPosition, spacePosition + 1), '');
+        let miniTime = time.replace(time.substring(colonPosition, spacePosition + 1), '');
+        return miniTime.replace('M', 'm');
     }
 
     return (
         <>
             <div className="weather-by-hour">
                 <h2 className="weather-by-hour__heading">Today's weather</h2>
-                <div className="weather-by-hour__container">
+                <div className="row">
                     {
-                        todayWeather.hour.map((hourData, index, completeDayData) => {
-                            if (index != 0 && index % 3 == 0) {
+                        React.useContext(WeatherData).forecast.forecastday[0].hour.map((hourData, index, completeDayData) => {
+                            if (index % 2 == 0) {
                                 return (
                                     <>
-                                        <div className="weather-by-hour__item">
-                                            <div className="weather-by-hour__hour">{getTime(hourData.time)}</div>
-                                            <img src={hourData.condition.icon} alt={hourData.condition.text} />
-                                            <div>{hourData.temp_c}&deg;</div>
+                                        <div className="col-md-2 col-sm-3 col-4 p-2">
+                                            <div className="weather-by-hour__item">
+                                                <div className="weather-by-hour__hour">{getTime(hourData.time)}</div>
+                                                <img src={hourData.condition.icon} alt={hourData.condition.text} />
+                                                <div>{hourData.temp_c}&deg;</div>
+                                            </div>
                                         </div>
                                     </>
                                 )

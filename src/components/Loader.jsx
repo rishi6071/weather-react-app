@@ -6,7 +6,7 @@ const Loader = () => {
 
     return (
         <>
-            <div className="container my-4 d-flex justify-content-center">
+            <div className="container mt-5 pt-5 d-flex justify-content-center">
                 <div className="spinner-grow text-info mr-3" role="status">
                     <span className="visually-hidden"></span>
                 </div>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import './css/NextDays.css';
+
+import { WeatherData } from './Current';
 
 const NextDays = () => {
-    // Next Days Data
-    const [nextDaysData, setNextDaysData] = useState(JSON.parse(localStorage.getItem('weatherData')).forecast.forecastday);
-
     // Get Day from Date
     const getDayValue = (dateValue) => {
         const day = new Date(dateValue).getDay();
@@ -38,7 +38,7 @@ const NextDays = () => {
                 <div className="next-3-days__container"></div>
 
                 {
-                    nextDaysData.map((dayData, index, forecast) => {
+                    React.useContext(WeatherData).forecast.forecastday.map((dayData, index, forecast) => {
                         return (
                             <>
                                 <div className="next-3-days__row">
