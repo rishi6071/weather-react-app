@@ -20,9 +20,30 @@ body {
   background-attachment: fixed;
 }
 
-@media screen and (min-width: 700px) {
+/* @media screen and (min-width: 700px) {
   body {
     margin-left: 20px;
     margin-right: 20px;
   }
+} */
+
+/******** Website Scrollbar CSS */
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: grey;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: grey;
 }
