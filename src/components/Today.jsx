@@ -1,5 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
-import axios from 'axios';
+import React, { useContext } from 'react';
 
 import './css/Today.css';
 
@@ -21,8 +20,8 @@ const Today = () => {
                 <h2 className="weather-by-hour__heading">Today's weather</h2>
                 <div className="row">
                     {
-                        React.useContext(WeatherData).forecast.forecastday[0].hour.map((hourData, index, completeDayData) => {
-                            if (index % 2 == 0) {
+                        useContext(WeatherData).forecast.forecastday[0].hour.map((hourData, index, completeDayData) => {
+                            if (index % 2 === 0) {
                                 return (
                                     <>
                                         <div className="col-md-2 col-sm-3 col-4 p-2">
@@ -34,6 +33,9 @@ const Today = () => {
                                         </div>
                                     </>
                                 )
+                            }
+                            else {
+                                return '';
                             }
                         })
                     }

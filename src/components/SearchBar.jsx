@@ -19,7 +19,7 @@ const SearchBar = () => {
             <LocationValue.Provider value={location}>
                 <nav className="navbar navbar-dark">
                     <div className="container-fluid">
-                        <a className="navbar-brand" href="#">
+                        <a className="navbar-brand" href="index.html">
                             <img src={BrandLogo} alt={"Brand Logo"} /> 
                             <span>WEATHER</span>
                         </a>
