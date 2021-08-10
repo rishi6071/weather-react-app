@@ -35,15 +35,20 @@ body {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #ffffff;
+  background: linear-gradient(
+    to bottom,
+    rgb(43, 50, 178) 0%,
+    rgb(20, 136, 204) 100%
+  );
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: grey;
+  background: rgba(0, 0, 0, 0.473);
+  border-radius: 10px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: grey;
+  background: rgba(0, 0, 0, 0.616);
 }

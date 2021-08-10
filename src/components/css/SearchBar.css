@@ -30,12 +30,29 @@
   outline: none;
 }
 
+.navbar .form-control {
+  border: transparent;
+}
+
 .navbar input[type="search"] {
   width: 270px;
   color: lightgrey !important;
-  border: 1.5px solid #9fa8da;
   border-right: none;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.144);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.navbar input[type="search"]:focus {
+  border-right: none;
+  background: rgba(0, 0, 0, 0.247);
+}
+
+.navbar input[type="search"]::placeholder {
+  color: lightgray;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-style: italic;
+  letter-spacing: 1px;
 }
 
 @media screen and (max-width: 768px) {
@@ -54,26 +71,18 @@
   }
 }
 
-.navbar input[type="search"]:focus {
-  background: transparent;
-  border: 2px solid #9fa8da;
-  border-right: none;
-}
-
-.navbar input[type="search"]::placeholder {
-  color: lightgray;
-  font-style: italic;
-}
-
 .navbar .btn {
   text-transform: uppercase;
   letter-spacing: 1px;
-  border: 1px solid #9fa8da;
-  background: #7986cb;
-  color: white;
+  background: rgba(0, 0, 0, 0.425);
+  color: rgba(255, 255, 255, 0.877);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  letter-spacing: 2px;
 }
 
 .navbar .btn:hover {
-  background: #5c6bc0;
-  color: white;
+  background: rgba(0, 0, 0, 0.541);
+  color: rgba(255, 255, 255, 0.808);
 }
